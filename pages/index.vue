@@ -7,7 +7,7 @@
 
     store.setBg(2)
 
-    const rs = await axios.get("https://admin.eroclub.site/models/")
+    const rs = await axios.get("https://server.eroclub.site/models/")
     const models = rs.data.data
 </script>
 
@@ -17,7 +17,7 @@
         <div class="models">
             <NuxtLink v-for="model in models" :to="'/models/'+model.modelId">
                 <div class="model">
-                    <div class="model__bg" :style="`background-image: url(https://admin.eroclub.site/uploads/${model.thumbnail})`"></div>
+                    <div class="model__bg" :style="`background-image: url(https://server.eroclub.site/uploads/${model.thumbnail})`"></div>
                     <div class="model__overflow">
                         <div class="model__name">{{ model.name }}</div>
                         <div class="model__number">{{ model.phone }}</div>

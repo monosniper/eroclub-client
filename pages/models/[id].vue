@@ -19,7 +19,7 @@
 
         <div class="block main">
             <div class="block__left">
-                <div class="block__img" :style="`background-image: url(5.45.92.200:8081/uploads/${model.thumbnail})`"></div>
+                <div class="block__img" :style="`background-image: url(http://5.45.92.200:8081/uploads/${model.thumbnail})`"></div>
             </div>
             <div class="block__right">
                 <div class="block__body">

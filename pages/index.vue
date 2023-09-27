@@ -17,7 +17,7 @@
         <div class="models">
             <NuxtLink v-for="model in models" :to="'/models/'+model.modelId">
                 <div class="model">
-                    <div class="model__bg" :style="`background-image: url(http://localhost:8081/uploads/${model.thumbnail})`"></div>
+                    <div class="model__bg" :style="`background-image: url(http://5.45.92.200:8081/uploads/${model.thumbnail})`"></div>
                     <div class="model__overflow">
                         <div class="model__name">{{ model.name }}</div>
                         <div class="model__number">{{ model.phone }}</div>

@@ -7,7 +7,7 @@
 
     store.setBg(1)
 
-    const rs = await axios.get("http://localhost:8081/models/"+route.params.id)
+    const rs = await axios.get("http://5.45.92.200:8081/models/"+route.params.id)
     const model = rs.data.data[0]
     console.log(model)
 

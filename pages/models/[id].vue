@@ -10,6 +10,14 @@
     const rs = await axios.get("https://server.eroclub.site/models/"+route.params.id)
     const model = rs.data.data[0]
     console.log(model)
+    let width
+    console.log(width)
+    if (process.client) {
+        width = window.innerWidth
+        console.log(width)
+    }
+    //
+    // watchEffect(() => width)
 
 </script>
 
@@ -22,10 +30,10 @@
                 <div class="block__img" :style="`background-image: url(https://server.eroclub.site/uploads/${model.thumbnail})`"></div>
             </div>
             <div class="block__right">
-                <div class="block__body">
+                <div v-if="width" class="block__body">
                     <div class="block__title ">{{ model.name }} <a :href="`tel:${model.phone}`" class="number">{{ model.phone }}</a></div>
                     <van-row class="prop" gutter="80">
-                        <van-col span="8">
+                        <van-col class="prop-col" :span="width <= 600 ? 24 : 12">
                             <van-row class="prop__row" gutter="20">
                                 <van-col span="16">Возраст:</van-col>
                                 <van-col span="8">{{ model.age }}</van-col>
@@ -35,7 +43,7 @@
                                 <van-col span="8">{{ model.location }}</van-col>
                             </van-row>
                         </van-col>
-                        <van-col span="8">
+                        <van-col class="prop-col" :span="width <= 600 ? 24 : 12">
                             <van-row class="prop__row" gutter="20">
                                 <van-col span="16">Рост:</van-col>
                                 <van-col span="8">{{ model.height }}</van-col>
@@ -48,7 +56,7 @@
                     </van-row>
                     <div class="prop-sep"></div>
                     <van-row class="prop" gutter="80">
-                        <van-col span="8">
+                        <van-col class="prop-col" :span="width <= 600 ? 24 : 12">
                             <van-row class="prop__row" gutter="20">
                                 <van-col span="16">1 час:</van-col>
                                 <van-col span="8">{{ model.hour }}</van-col>
@@ -58,7 +66,7 @@
                                 <van-col span="8">{{ model.night }}</van-col>
                             </van-row>
                         </van-col>
-                        <van-col span="8">
+                        <van-col class="prop-col" :span="width <= 600 ? 24 : 12">
                             <van-row class="prop__row" gutter="20">
                                 <van-col span="16">2 часа:</van-col>
                                 <van-col span="8">{{ model.hour_2 }}</van-col>
@@ -73,8 +81,8 @@
             </div>
         </div>
 
-        <van-row gutter="20">
-            <van-col span="10">
+        <van-row v-if="width" gutter="20">
+            <van-col :span="width <= 600 ? 24 : 10">
                 <div class="block">
                     <div class="block__body">
                         <div class="block__title">{{ model.description }}</div>
@@ -85,7 +93,7 @@
                     </div>
                 </div>
             </van-col>
-            <van-col span="14">
+            <van-col :span="width <= 600 ? 24 : 14">
                 <div class="block">
                     <div class="block__body">
                         <div class="block__title">Интим услуги:</div>
@@ -115,6 +123,7 @@
         backdrop-filter: blur(10px);
         margin-bottom: 1rem;
         display: flex;
+        flex-wrap: wrap;
 
         &__img {
             background-size: cover;
@@ -171,6 +180,10 @@
     .prop {
         font-size: 14px;
 
+        &-col {
+            margin-bottom: 1em;
+        }
+
         &-sep {
             margin-bottom: 3rem;
         }
@@ -190,5 +203,15 @@
         color: #EF08D8;
         font-size: 18px;
         letter-spacing: 1.89px;
+    }
+
+    @media screen and (max-width: 750px) {
+        .block.main {
+            justify-content: center;
+
+            .block__right {
+                width: 100%;
+            }
+        }
     }
 </style>

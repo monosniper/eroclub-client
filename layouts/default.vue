@@ -29,6 +29,8 @@
       height: 100%;
       margin: 0 auto;
       width: 900px;
+      max-width: calc(100% - 30px);
+      padding: 0 15px;
   }
   .wrapper__ov {
       height: 100%;

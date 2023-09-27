@@ -6,13 +6,13 @@
   <div>
       <NuxtLink to="/" class="logo">
           <img src="/img/logo.svg" alt="Logo">
-          <div class="logo__title">eroclub is not only for dalbaebs</div>
+          <div class="logo__title">Лучшие проститутки города Одесса</div>
       </NuxtLink>
       <div class="normalizer"></div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .logo {
     position: fixed;
     left: 0;

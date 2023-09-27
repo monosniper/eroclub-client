@@ -35,6 +35,7 @@
         gap: 20px;
         flex-wrap: wrap;
         padding-bottom: 100px;
+        justify-content: center;
 
         &__row {
             margin-bottom: 2rem;

@@ -2,6 +2,7 @@
     import Logo from "~/components/Logo.vue";
     import {useMainStore} from "~/store";
     import axios from "axios";
+    import LocationFilter from "~/components/LocationFilter.vue";
 
     const store = useMainStore()
 
@@ -9,14 +10,17 @@
 
     const rs = await axios.get("https://server.eroclub.site/models/")
     const models = rs.data.data
+    const locations = models.map(({location}) => location)
+    store.setLocation(locations[0])
 </script>
 
 <template>
     <div>
         <Logo />
+      <LocationFilter :locations="locations" />
         <div class="models">
             <NuxtLink v-for="model in models" :to="'/models/'+model.modelId">
-                <div class="model">
+                <div class="model" v-if="model.location === store.location">
                     <div class="model__bg" :style="`background-image: url(https://server.eroclub.site/uploads/${model.thumbnail})`"></div>
                     <div class="model__overflow">
                         <div class="model__name">{{ model.name }}</div>

@@ -31,6 +31,8 @@
       width: 900px;
       max-width: calc(100% - 30px);
       padding: 0 15px;
+    z-index: 100;
+    position: relative;
   }
   .wrapper__ov {
       height: 100%;

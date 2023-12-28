@@ -10,7 +10,7 @@
 
     const rs = await axios.get("https://server.eroclub.site/models/")
     const models = rs.data.data
-    const locations = models.map(({location}) => location)
+    const locations = new Set(models.map(({location}) => location))
     store.setLocation(locations[0])
 </script>
 
